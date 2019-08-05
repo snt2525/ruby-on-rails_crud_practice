@@ -1,0 +1,8 @@
+게시판
+<form action="/post/update/<%= @post.id %>" method ="post">
+    제목 <input name = "title" type = "text" value = "<%= @post.title %>"> <br>
+    내용 <input name = "content" type = "text" value = "<%= @post.content %>" > <br>
+    <input type = "submit"/>
+</form>
+<br>
+<a href = "/post/index"> 돌아가기 </a>

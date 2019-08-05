@@ -1,0 +1,25 @@
+ <a>게시판</a><br><br>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Date</th>
+        </tr>   
+        </thead>
+        <tbody>
+           <tr>
+                <% @searches.each do |x| %>
+                <td><%= x.title %></td>
+                <td><%= content_tag(:span, truncate( raw( sanitize(x.content, :attributes => %w(id class style) ) ), :length => 70, :omission => "...")) %></td>
+                <td><%= x.created_at.in_time_zone("Asia/Seoul").strftime('%Y-%m-%d %H:%M') %> </td>
+                <td> 
+                    <a href="/post/show/<%= x.id%>">보기</a> 
+                </td> 
+             </tr> 
+             <% end %>
+        </tbody>
+    </table>
+    <br>
+    <a href= "create"> 글쓰기</a>
+    <a href="index">메인으로</a> 

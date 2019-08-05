@@ -1,0 +1,27 @@
+
+    <a>게시판</a><br>
+    <%= render 'post/search_form', post: @post.klass %>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Date</th>
+        </tr>   
+        </thead>
+        <tbody>
+           <tr>
+                <% @post.each do |post| %>
+                <td><%= post.title %></td>
+                <td><%= post.content %> </td>
+                <td><%= post.created_at.in_time_zone("Asia/Seoul").strftime('%Y-%m-%d %H:%M') %> </td>
+                <td>
+                 <a href="show/<%= post.id%>">보기</a> 
+                </td>
+                 </tr> 
+                 <% end %>
+        </tbody>
+    </table>
+    <a href= "create"> 글쓰기</a>
+    <br>
